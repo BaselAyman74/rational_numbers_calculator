@@ -1,0 +1,81 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int d1 = 0, d2 = 0, n1 = 0, n2 = 0,nt=0,dt=0;
+    char op = ' ';
+     cout << "when you want to exit type'%' in the operation sign"<<endl;
+    while (true) {
+        cout << "Please enter the numerator of the first number: ";
+        cin >> n1;
+        cout << "Please enter the denominator of the first number: ";
+        cin >> d1;
+        cout << "Please enter the sign of the operation that you want to do: ";
+        cin >> op;
+        if (op == '%')
+        {
+            break;
+        }
+        cout << "Please enter the numerator of the second number: ";
+        cin >> n2;
+        cout << "Please enter the denominator of the second number: ";
+        cin>> d2;
+        if (d1 == 0||d2==0) {
+            cout << "Please enter a valid denominator,it can't equal '0'" << endl;
+            continue;
+        }
+        if (op == '+') {
+            nt = n1 * d2 + n2 * d1;
+            dt = d1 * d2;
+     
+        }
+        else if (op == '-') {
+            nt = n1 * d2 - n2 * d1;
+            dt = d1 * d2;
+        }
+        else if (op == '*' || op == 'x') {
+            nt = n1 * n2;
+            dt = d1 * d2;
+        }
+        else if (op == '/') {
+            nt = n1 * d2;
+            dt = d1 * n2;
+           
+        }
+        else {
+            cout << "invalid operation,please try again..."<<endl;
+            continue;
+        }
+        if (nt == 0) {
+            cout <<'='<<nt << endl;
+        }
+        else if(dt == 0){
+            cout << "Undefined"<<endl;
+        }
+         else if(dt == 1){
+            cout <<'='<< nt <<endl;
+        }
+        else if (dt == nt) {
+            cout <<'='<<1<<endl;
+        }
+        else {
+            while (nt % 5 == 0 && dt % 5 == 0) {
+                    nt /= 5;
+                    dt /= 5;
+                }
+                while (nt % 3 == 0 && dt % 3 == 0) {
+                    nt /= 3;
+                    dt /= 3;
+                }
+                while (nt % 2 == 0 && dt % 2 == 0) {
+                    nt /= 2;
+                    dt /= 2;
+                }
+            
+            
+            
+            cout <<"="<< nt << '/' << dt << endl;
+        }
+    }
+        return 0;
+}
